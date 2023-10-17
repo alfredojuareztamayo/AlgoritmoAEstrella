@@ -8,7 +8,7 @@ public class GridMap : MonoBehaviour
     public LayerMask unawalkableMask;
     public Vector2 gridWorldSize;
     public float nodeRadius;
-    Node[,] grid;
+    M_Node[,] grid;
     float nodeDiameter;
     int gridSizeX, gridSizeY;
 
@@ -23,7 +23,7 @@ public class GridMap : MonoBehaviour
 
     void CreateGrid()
     {
-        grid = new Node[gridSizeX, gridSizeY];
+        grid = new M_Node[gridSizeX, gridSizeY];
         Vector3 worldBottomLeft = transform.position -Vector3.right * gridWorldSize.x/2 - Vector3.forward*gridWorldSize.y/2;
 
         for(int x = 0; x < gridSizeX; x++)
@@ -32,12 +32,12 @@ public class GridMap : MonoBehaviour
             {
                 Vector3  worldPoint = worldBottomLeft + Vector3.right *(x * nodeDiameter + nodeRadius) + Vector3.forward *(y*nodeDiameter+nodeRadius);
                 bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius,unawalkableMask));
-                grid[x,y] = new Node(walkable,worldPoint);
+                grid[x,y] = new M_Node(walkable,worldPoint);
             }
         }
     }
 
-    public Node NodeFromWorldPoint(Vector3 worldPosition)
+    public M_Node NodeFromWorldPoint(Vector3 worldPosition)
     {
         float percentX = (worldPosition.x + gridWorldSize.x / 2) / gridWorldSize.x;
         float percentY = (worldPosition.z + gridWorldSize.y / 2) / gridWorldSize.y;
@@ -55,7 +55,7 @@ public class GridMap : MonoBehaviour
         if(grid != null)
         {
             //Node playerNode = NodeFromWorldPoint(player.position);
-            foreach(Node node in grid)
+            foreach(M_Node node in grid)
             {
                 Gizmos.color = (node.walkable)? Color.white : Color.red;
                 //if(playerNode == node)

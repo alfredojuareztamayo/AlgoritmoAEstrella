@@ -58,9 +58,12 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.2.1f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\M_Node.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\Scripts\GridMap.cs" />
+    <Compile Include="Assets\Scripts\GridStar.cs" />
+    <Compile Include="Assets\Scripts\Pathfinding.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
